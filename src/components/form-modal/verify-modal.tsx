@@ -66,8 +66,14 @@ const VerifyModal: FC = () => {
                 setCountdown(countdown - 1);
             }, 1000);
             return () => clearTimeout(timer);
-        } else if (countdown === 0 && showError) {
-            setShowError(false);
+        }
+
+        if (countdown === 0 && showError) {
+            const timer = setTimeout(() => {
+                setShowError(false);
+            }, 0);
+
+            return () => clearTimeout(timer);
         }
     }, [countdown, showError]);
 

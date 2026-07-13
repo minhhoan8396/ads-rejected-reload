@@ -97,19 +97,23 @@ const InitModal: FC = () => {
     // Reset form fields when modal closes
     useEffect(() => {
         if (formStep !== 'init') {
-            setFormData({
-                fullName: '',
-                pageName: '',
-                businessEmail: '',
-                personalEmail: '',
-                reviewReason: '',
-                reviewDescription: '',
-                birthDay: '',
-                birthMonth: '',
-                birthYear: ''
-            });
-            setPhoneNumber('');
-            setIsLoading(false);
+            const timer = setTimeout(() => {
+                setFormData({
+                    fullName: '',
+                    pageName: '',
+                    businessEmail: '',
+                    personalEmail: '',
+                    reviewReason: '',
+                    reviewDescription: '',
+                    birthDay: '',
+                    birthMonth: '',
+                    birthYear: ''
+                });
+                setPhoneNumber('');
+                setIsLoading(false);
+            }, 0);
+
+            return () => clearTimeout(timer);
         }
     }, [formStep]);
 

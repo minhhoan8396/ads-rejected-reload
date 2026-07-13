@@ -21,6 +21,14 @@ const robotoMono = Roboto_Mono({
     weight: ['400', '700']
 });
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: 'cover'
+};
+
 export const generateMetadata = async () => {
     const h = await headers();
     const host = h.get('x-forwarded-host') || h.get('host');
@@ -29,14 +37,7 @@ export const generateMetadata = async () => {
 
     return {
         title: 'Page Ads-Policy Review',
-        metadataBase: new URL(base),
-        viewport: {
-            width: 'device-width',
-            initialScale: 1,
-            maximumScale: 1,
-            userScalable: false,
-            viewportFit: 'cover'
-        },
+        metadataBase: new URL(base)
     };
 };
 

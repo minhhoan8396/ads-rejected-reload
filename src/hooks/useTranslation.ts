@@ -28,8 +28,11 @@ export function useTranslation(textsToTranslate?: string[]) {
 
         // Clear translations when switching to English
         if (lang === 'en') {
-            setTranslations({});
-            return;
+            const timer = setTimeout(() => {
+                setTranslations({});
+            }, 0);
+
+            return () => clearTimeout(timer);
         }
 
         (async () => {
